@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love you</title>
+    <style>
+        /* Add a background image for the entire page */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-image: url('backgroundimg.jpg'); /* Replace with your image path */
+            background-size: cover; /* Ensures the image covers the entire page */
+            background-position: center; /* Centers the background image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-attachment: fixed; /* Makes the background fixed while scrolling */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: rgba(255, 255, 255, 0.8); /* Added transparency for better visibility */
+            color: rgb(233, 106, 195);
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 100px;
+        }
+        .banner::after {
+            content: ' \1F497'; /* Unicode for pink heart emoji */
+        }
+        .button-container {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+        }
+        .button {
+            width: 120px;
+            height: 120px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            color: rgb(213, 145, 186);
+            background-color: #ffffff;
+            border-radius: 50%;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #f4f6f7;
+            transform: scale(1.2);
+        }
+        .divider {
+            margin-top: 50px;
+            border-top: 3px solid #ccc;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .content {
+            display: none;
+            margin-top: 50px;
+            font-size: 20px;
+            color: #ea50a5;
+            background-color: rgb(255, 255, 255); /* Added transparency for better visibility */
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .textbox-container {
+            position: relative;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .textbox {
+            width: 500px;
+            height: 200px;
+            padding: 20px;
+            border: 3px solid pink;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgb(253, 252, 252);
+            background-color: white;
+            font-size: 18px;
+            text-align: left;
+            display: none;
+        }
+        .nav-button {
+            margin-top: 10px;
+            padding: 15px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #f0acd3;
+            color: white;
+            box-shadow: 0px 0px 10px pink;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .nav-button:hover {
+            background-color: #f8f5f7;
+            box-shadow: 0px 0px 15px #dfb8db;
+        }
+        .slideshow-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        .slides {
+            display: none;
+            max-width: 80%; /* Adjust this value as needed */
+            max-height: 400px; /* Adjust this value to your preferred size */
+            height: auto;
+            border-radius: 15px; /* Added rounded corners for images */
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #eab7d1;
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 18px;
+        }
+        .prev { left: -60px; }
+        .next { right: -60px; }
+        .prev:hover, .next:hover {
+            background-color: #edc5db;
+        }
+        #text-content {
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.8); /* Added transparency for better visibility */
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+        }
+        .description-box {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #ccc;
+            display: inline-block;
+            width: 500px;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Added transparency for better visibility */
+            border-radius: 10px;
+        }
+    </style>
+    <script>
+        function showContent(contentId) {
+            document.getElementById('content1').style.display = 'none';
+            document.getElementById('content2').style.display = 'none';
+            document.getElementById(contentId).style.display = 'block';
+        }
+
+        let letterIndex = 0;
+        let letters = [
+            "hey Niranjan. Not just now,from the beginning I had an eye  on you, romantically illana kooda unna neriya notice pannuvan form the beginning, and poga poga I started to like you. Nee romba innocent ah irupa and cute ah pesuva adhella romba pudikum and at first I fell in love with your eyes. ippo kooda I melt whenever I see your eyes. evlo stare pannalum bore eh adikadhu. You're the sweetest person I've ever known. nee panra chinna chinna vishyo la avlo pudikum. And ellaru enna edha oru kora solla paathu unnaku mattum dhan enna as a whole ah pudichidhu, I don't need to change or pretend. ",
+            "Naa unkitta evlo kova pattalum, sanda potalum or hurt pannalu nee en kooda iruka. naa unkooda iruka paathu la I feel like a baby. andha alavuku peaceful ah feel pannuvan. and I feel like I'm the happiest when I'm with you. nee evlo imperfect ah irundhalu I love all your imperfections like you love mine.",
+            "I love you more ah anyone and anything. I could stare at you eyes, kiss your lips, hug you, hold you hands, talk to you and travel with you for a loooooong time. nee ennaku avlo precious and ennaku unna avlo pudikum. Nee en thangam, en chellam , en paapa. naa unn avlo love panran. Thank you enna avlo paathukuta and ennaku neriya happy memories ah kudutha. I love you da un kooda illama ponalum I'll always love you.🫂😚🩷✨"
+        ];
+
+        function showLetter(index) {
+            let letterBox = document.getElementById("letter-box");
+            letterBox.style.display = "block";
+            letterBox.style.opacity = "0";
+            letterBox.style.transition = "opacity 0.5s, transform 0.5s";
+            letterBox.style.transform = "translateY(20px)";
+            setTimeout(() => {
+                letterBox.innerHTML = letters[index];
+                letterBox.style.opacity = "1";
+                letterBox.style.transform = "translateY(0)";
+            }, 100);
+        }
+
+        function changeLetter(n) {
+            letterIndex = (letterIndex + n + letters.length) % letters.length;
+            showLetter(letterIndex);
+        }
+
+        let slideIndex = 0;
+        let slides;
+        let descriptions = [
+            "The first picture we took together and the day I held your hand for  the first time! 💕",
+            "Those days I was started falling for you <3",
+            "The first time we went to the movie alone. Just the both of us ☺️",
+            "We may fight a lot, but still it's our second anniversary 😂",
+            "I Miss you in every places I visit without you 🥰",
+            "Could spend a whole day together with you and still it's not enough😚",
+            "This picture makes me say, Alexa play 'Dhooraththil nee vandhaalae En manasi mazhaiyadikkum,Migapidithta paadal ondrai Udhadugalu munumunukkum…'🎶",
+            "Never thought bus travels could be this fun🤗",
+            "This might not be the perfect picture,but I love the way you smile🫣",
+            "Not just on your birthday, You're always my baby🤌🏻",
+            "That cat might be cute, but you're the cutest (and why the hell you're so handsome)😩",
+            "you being in my home for a whole day was a dream come true🫂",
+            "Our first temple date after all this time✨",
+            "I'm the happiest when I'm wrapped around by your arms🤗",
+            "I was literally blushing and melting at the way you were looking at me while taking those photos🫠",
+            "I love You da💋🩷",
+
+        ];
+
+        function showSlide(index) {
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slides[index].style.display = "block";
+            document.getElementById("text-content").textContent = descriptions[index];
+        }
+
+        function changeSlide(n) {
+            slideIndex = (slideIndex + n + slides.length) % slides.length;
+            showSlide(slideIndex);
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            slides = document.getElementsByClassName("slides");
+            showSlide(slideIndex);
+            showLetter(letterIndex);
+        });
+    </script>
+</head>
+<body>
+    <div class="banner">Happy Valentines Day Niranjan !</div>
+    <div class="button-container">
+        <button class="button" onclick="showContent('content1')">A love Letter for You 💕 </button>
+        <button class="button" onclick="showContent('content2')">A Cute Glimpse of "us"✨</button>
+    </div>
+    <div class="divider"></div>
+    <div id="content1" class="content">
+        <div class="textbox-container">
+            <div id="letter-box" class="textbox"></div>
+            <br>
+            <button class="nav-button" onclick="changeLetter(-1)">1</button>
+            <button class="nav-button" onclick="changeLetter(1)">2</button>
+        </div>
+    </div>
+    <div id="content2" class="content">
+        <div class="slideshow-container">
+            <button class="prev" onclick="changeSlide(-1)">&#10094;</button>
+            <img class="slides" src="iv1.jpg" alt="Image 1">
+            <img class="slides" src="oldcse.jpg" alt="Image 5">
+            <img class="slides" src="movie.jpg" alt="Image 2">
+            <img class="slides" src="aniv2.jpg" alt="Image 3">
+            <img class="slides" src="beach.jpg" alt="Image 4">
+            <img class="slides" src="independenceday.jpg" alt="Image 5">
+            <img class="slides" src="yogeakka.jpg" alt="Image 6">
+            <img class="slides" src="bus2.jpg" alt="Image 7">
+            <img class="slides" src="mit.jpg" alt="Image 8">
+            <img class="slides" src="nbirthday.jpg" alt="Image 9">
+            <img class="slides" src="catcafe.jpg" alt="Image 10">
+            <img class="slides" src="birthday.jpg" alt="Image 11">
+            <img class="slides" src="temple.jpg" alt="Image 12">
+            <img class="slides" src="vrworld.jpg" alt="Image 13">
+            <img class="slides" src="terrace.jpg" alt="Image 14">
+            <img class="slides" src="hands.jpg" alt="Image 15">
+            <button class="next" onclick="changeSlide(1)">&#10095;</button>
+        </div>
+        <!-- Description placed below the slideshow -->
+        <div id="text-content" class="description-box">A cute glimpse of us</div>
+    </div>
+</body>
+</html>
